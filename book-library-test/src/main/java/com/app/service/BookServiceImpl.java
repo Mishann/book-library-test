@@ -2,38 +2,45 @@ package com.app.service;
 
 import java.util.List;
 
+import com.app.dao.BookDao;
+import com.app.dao.BookDaoImpl;
 import com.app.model.Book;
 
 public class BookServiceImpl implements BookService {
 
-	public boolean add(Book book) {
-		// TODO Auto-generated method stub
-		return false;
+	private BookDao bookDao = new BookDaoImpl();
+	
+	@Override
+	public void add(Book book) {
+		bookDao.add(book);
 	}
 
-	public boolean update(Book book) {
-		// TODO Auto-generated method stub
-		return false;
+	@Override
+	public void update(Book book) {
+		bookDao.update(book);
+		
 	}
 
-	public boolean delete(Long id) {
-		// TODO Auto-generated method stub
-		return false;
+	@Override
+	public void delete(Long id) {
+		bookDao.delete(id);
 	}
 
+	@Override
 	public List<Book> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return bookDao.findAll();
 	}
 
+	@Override
 	public Book findOne(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return bookDao.findOne(id);
 	}
 
-	public List<Book> findByName(String name) {
-		// TODO Auto-generated method stub
-		return null;
+	@Override
+	public List<Book> findByTitle(String title) {
+		return bookDao.findByTitle(title);
 	}
+
+
 
 }

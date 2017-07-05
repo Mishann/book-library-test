@@ -5,9 +5,9 @@ import com.app.model.Book;
 
 public interface BookDao {
 
-	boolean add(Book book);
-	boolean update(Book book);
-	boolean delete(Long id);
+	void add(Book book);
+	void update(Book book);
+	void delete(Long id);
 	List<Book> findAll();
 	
 	Book findOne(Long id);

@@ -15,7 +15,7 @@ public class BookDaoImpl implements BookDao {
 
 	SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 
-	public boolean add(Book book) {
+	public void add(Book book) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 
@@ -23,10 +23,10 @@ public class BookDaoImpl implements BookDao {
 
 		session.getTransaction().commit();
 		session.close();
-		return true;
+
 	}
 
-	public boolean update(Book book) {
+	public void update(Book book) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 
@@ -34,10 +34,10 @@ public class BookDaoImpl implements BookDao {
 
 		session.getTransaction().commit();
 		session.close();
-		return true;
+
 	}
 
-	public boolean delete(Long id) {
+	public void delete(Long id) {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 
@@ -47,7 +47,7 @@ public class BookDaoImpl implements BookDao {
 
 		session.getTransaction().commit();
 		session.close();
-		return true;
+
 
 	}
 
@@ -55,7 +55,7 @@ public class BookDaoImpl implements BookDao {
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 
-		Query query = session.createQuery("select from Book");
+		Query query = session.createQuery("from Book");
 		List<Book> books = query.getResultList();
 
 		session.getTransaction().commit();

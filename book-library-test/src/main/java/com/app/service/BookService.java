@@ -5,11 +5,11 @@ import com.app.model.Book;
 
 public interface BookService {
 
-	boolean add(Book book);
-	boolean update(Book book);
-	boolean delete(Long id);
+	void add(Book book);
+	void update(Book book);
+	void delete(Long id);
 	List<Book> findAll();
 	
 	Book findOne(Long id);
-	List<Book> findByName(String name);	
+	List<Book> findByTitle(String title);	
 }
