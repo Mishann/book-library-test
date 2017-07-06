@@ -12,4 +12,7 @@ public interface BookService {
 	
 	Book findOne(Long id);
 	List<Book> findByTitle(String title);	
+	
+	List<Book> sortByTitleAsc(List<Book> books);
+	
 }

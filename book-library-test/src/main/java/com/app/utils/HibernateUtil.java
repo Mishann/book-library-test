@@ -8,46 +8,38 @@ import org.hibernate.service.ServiceRegistry;
 import com.app.model.Book;
 
 public class HibernateUtil {
-
 	// Annotation based configuration
 	private static SessionFactory sessionAnnotationFactory;
 
-	private static SessionFactory buildSessionFactory(){
-	   	try {
-        	Configuration configuration = new Configuration();
-        	configuration.configure("hibernate.cfg.xml");
-        	
-        	configuration.addAnnotatedClass(Book.class);
-        	
-        	System.out.println("Hibernate Annotation Configuration loaded");
-        	
-        	ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
-        			.applySettings(configuration.getProperties())
-        			.build();
-        	System.out.println("Hibernate Annotation serviceRegistry created");
-        	
-        	SessionFactory sessionFactory = configuration.buildSessionFactory(serviceRegistry);
-        	
-            return sessionFactory;
-        }
-        catch (Throwable ex) {
-            System.err.println("Initial SessionFactory creation failed." + ex);
-            throw new ExceptionInInitializerError(ex);
-        }
-	   	
-	   	
+	private static SessionFactory buildSessionFactory() {
+		try {
+			Configuration configuration = new Configuration();
+			configuration.configure("hibernate.cfg.xml");
+
+			configuration.addAnnotatedClass(Book.class);
+
+			ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
+					.applySettings(configuration.getProperties()).build();
+
+			SessionFactory sessionFactory = configuration
+					.buildSessionFactory(serviceRegistry);
+
+			return sessionFactory;
+		} catch (Throwable ex) {
+			System.err.println("Initial SessionFactory creation failed." + ex);
+			throw new ExceptionInInitializerError(ex);
+		}
 	}
+
 	public static SessionFactory getSessionFactory() {
-		if(sessionAnnotationFactory == null)
+		if (sessionAnnotationFactory == null)
 			sessionAnnotationFactory = buildSessionFactory();
-        return sessionAnnotationFactory;
-    }
-	
-	public static void closeSessionFactory (){
-		if(!sessionAnnotationFactory.isClosed())
+		return sessionAnnotationFactory;
+	}
+
+	public static void closeSessionFactory() {
+		if (!sessionAnnotationFactory.isClosed())
 			sessionAnnotationFactory.close();
 	}
-	
-	
-	
+
 }

@@ -2,6 +2,7 @@ package com.app.service;
 
 import java.util.List;
 
+import com.app.comparator.BookTitleComparator;
 import com.app.dao.BookDao;
 import com.app.dao.BookDaoImpl;
 import com.app.model.Book;
@@ -39,6 +40,12 @@ public class BookServiceImpl implements BookService {
 	@Override
 	public List<Book> findByTitle(String title) {
 		return bookDao.findByTitle(title);
+	}
+
+	@Override
+	public List<Book> sortByTitleAsc(List<Book> books) {
+		 books.sort(new BookTitleComparator());
+		 return books;
 	}
 
 
