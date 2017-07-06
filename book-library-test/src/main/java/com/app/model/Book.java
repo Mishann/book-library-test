@@ -53,6 +53,4 @@ public class Book {
 	public String toString() {
 		return "Book: author=" + author + " title=" + title;
 	}
-
-	
 }

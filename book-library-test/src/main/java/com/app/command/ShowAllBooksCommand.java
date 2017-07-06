@@ -10,7 +10,7 @@ public class ShowAllBooksCommand implements Command {
 	
 	@Override
 	public void execute(String paramCommand) {
-		// param command doesn't required	
+		// paramCommand doesn't required	
 		List<Book> allBooks = bookService.findAll();
 		List<Book> booksSortedByTitleAsc = bookService.sortByTitleAsc(allBooks);
 		

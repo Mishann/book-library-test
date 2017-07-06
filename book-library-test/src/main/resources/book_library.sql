@@ -12,7 +12,7 @@ insert into book(`author`,`name`)
 values('George Orwell', '"1984"');
 
 insert into book(`author`,`name`)
-values('Charles Dickens', '"Great Expectations "');
+values('Charles Dickens', '"Great Expectations"');
 
 insert into book(`author`,`name`)
 values('Charles Dickens', '"Great Expectations"');
@@ -25,8 +25,3 @@ values('Charles Dickens', '"David Copperfield"');
 
 insert into book(`author`,`name`)
 values('Miguel de Cervantes', '"Don Quixote"');
-
-
-
-
-

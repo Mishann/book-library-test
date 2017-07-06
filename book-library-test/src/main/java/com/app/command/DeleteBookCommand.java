@@ -7,7 +7,6 @@ import com.app.service.BookService;
 import com.app.service.BookServiceImpl;
 
 public class DeleteBookCommand implements Command {
-	
 	private BookService bookService = new BookServiceImpl();
 	
 	@Override
@@ -31,10 +30,10 @@ public class DeleteBookCommand implements Command {
 			}
 			
 			Scanner sc = new Scanner(System.in);
-			Integer userChoice = sc.nextInt();
-			
-			if(userChoice < 0 || userChoice>= books.size())
-				throw new IllegalArgumentException("There no book in list with number" + userChoice);
+			int userChoice = sc.nextInt();
+				sc.close();
+			if(userChoice <= 0 || userChoice > books.size())
+				throw new IllegalArgumentException("There no book in list with number " + userChoice);
 			else{
 				Book bookToDelete = books.get(userChoice-1);
 				bookService.delete(bookToDelete.getId());

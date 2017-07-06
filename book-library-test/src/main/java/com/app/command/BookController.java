@@ -2,21 +2,20 @@ package com.app.command;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.TreeMap;
 
-public class Controller {
+public class BookController {
 	// commandType is the key of map
 	private Map<String, Command> supportedCommads = new HashMap<>();
 
 	public void addCommand(Command command) {
-
 		if (supportedCommads.containsKey(command.getCommandType()))
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("There is command with the same type!");
 
 		supportedCommads.put(command.getCommandType().toUpperCase(), command);
 	}
 
 	public void showAllSupportedCommand() {
+		System.out.println("--Supported commands--");
 		supportedCommads.forEach((k, v) -> System.out.println(v.getCommandDescription()));
 	}
 
@@ -31,7 +30,7 @@ public class Controller {
 			if (commandType == null)
 				throw new IllegalArgumentException("Wrong command");
 
-			// pass command further withot command type
+			// pass command further without command type verb
 			String command = unparsedUserInput
 					.substring(unparsedUserInput.toUpperCase().indexOf(commandType) + commandType.length());
 
@@ -39,7 +38,5 @@ public class Controller {
 		} catch (Exception e) {
 			System.err.println(e.getMessage());
 		}
-
 	}
-
 }

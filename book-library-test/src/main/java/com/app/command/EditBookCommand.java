@@ -51,8 +51,8 @@ public class EditBookCommand implements Command {
 				
 				Scanner sc = new Scanner(System.in);
 				Integer userChoice = sc.nextInt();
-
-				if (userChoice < 0 || userChoice >= books.size())
+					sc.close();
+				if (userChoice <= 0 || userChoice > books.size())
 					throw new IllegalArgumentException("There no book in list with number " + userChoice);
 				else{
 					Book bookEdit = books.get(userChoice-1);

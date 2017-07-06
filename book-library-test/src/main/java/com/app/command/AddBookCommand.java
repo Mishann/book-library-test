@@ -22,6 +22,9 @@ public class AddBookCommand implements Command {
 			String author = paramCommand.substring(0, paramCommand.indexOf("\"")).trim();
 			String title = paramCommand.substring(paramCommand.indexOf("\"")).trim();
 
+			if(author.isEmpty() || title.isEmpty())
+				throw new IllegalArgumentException("Wrong command");
+		
 			Book book = new Book();
 			book.setAuthor(author);
 			book.setTitle(title);
@@ -39,7 +42,7 @@ public class AddBookCommand implements Command {
 	public String getCommandDescription() {
 		return "Add new book: add <author> \"<book title>\" ";
 	}
-
+	
 	@Override
 	public String getCommandType() {
 		return "add";
